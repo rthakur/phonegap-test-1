@@ -1,0 +1,33 @@
+<ion-view title="Audit Sections">
+
+    <div class="banner-bottom" ng-show="auditSectionService.num_all_unanswers()<1" ><!--
+        --><a href="#" class="greenbtn ui-link button half" ng-click="save()" >Save</a><!--
+        --><a href="#" class="greenbtn ui-link button half" ng-click="submit()" >Submit</a>
+    </div>
+    <a href="#" ng-show="auditSectionService.num_all_unanswers()>0" class="greenbtn ui-link banner-bottom button" ng-click="save()" >Save</a>
+
+    <ion-content class="ion-content-audit-section" padding="false">
+        <div data-role="page" id="auditsectionquestions" class="auditsectionquestions page-background ui-page ui-page-theme-a ui-page-active" data-url="auditsectionquestions" tabindex="0">
+            <div role="main" class="content-bgshadow">
+                <div class="ui-body auditsectionquestions-content">
+                    <p>The red callouts are the number of unanswered questions in each section.  Once your audit is complete, you may submit.  Save work frequently.</p>
+                    <div class="auditsectionquestionsholder">
+                        <ul>
+                            <li class="button" ng-repeat="section in sections" item-width="50%" item-height="233px" ng-click="start_section(section)" >
+                                <a href="#" class="ui-link"><img src="{{icons[$index]}}" alt="">
+                                    <p>{{section.unanswered}}</p>
+                                </a> 
+                                <span>{{section.name}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--<ion-infinite-scroll
+            on-infinite="loadMore()"
+            distance="1%"
+            ng-if="moreDataCanBeLoaded()" >
+            </ion-infinite-scroll>-->
+        </div>
+    </ion-content>
+</ion-view>
